@@ -1,6 +1,6 @@
 {
   "name": "generator-hmrcnodeprototype",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "A generator for Yeoman with HMRC termplate to will kick start a Node Application using Express.",
   "keywords": [
     "yeoman-generator"
@@ -16,21 +16,23 @@
     "url": "git://github.com/HarryGull/generator-hmrcnodeprototype.git"
   },
   "dependencies": {
-    "yeoman-generator": "^0.13.4"
+    "yeoman-generator": "^0.20.3"
   },
   "devDependencies": {},
   "peerDependencies": {
     "yo": ">=1.0.0-rc.1"
   },
   "engines": {
-    "node": ">=0.8.0",
+    "node": ">=0.12.0",
     "npm": ">=1.2.10"
   },
   "license": "MIT",
   "directories": {
     "test": "test"
   },
-  "scripts": {
-    "test": "mocha"
+  
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
+
 }
