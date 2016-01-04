@@ -1,7 +1,7 @@
 # generator-hmrcnodeprototype
 
 A generator for [Yeoman](http://yeoman.io).
-This provides an HMRC Yeaoman template to generate an initial node Express prototype using the govuk frontend toolkit and govuk mustache template.
+This provides an HMRC Yeoman template to generate an initial node Express prototype using the govuk frontend toolkit and govuk mustache template.
 
 ## Getting Started
 
