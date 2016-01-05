@@ -1,6 +1,8 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var wiring = require("html-wiring");
+var mkdirp = require('mkdirp');
 
 
 var NodeExpressGenerator = module.exports = function NodeExpressGenerator(args, options, config) {
@@ -10,7 +12,10 @@ var NodeExpressGenerator = module.exports = function NodeExpressGenerator(args, 
     this.installDependencies({ skipInstall: options['skip-install'] });
   });
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+  // this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
+
+  this.pkg = JSON.parse(wiring.readFileAsString(path.join(__dirname, '../package.json')));
+
 };
 
 util.inherits(NodeExpressGenerator, yeoman.generators.Base);
