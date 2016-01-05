@@ -4,7 +4,7 @@ var path    = require('path');
 var helpers = require('yeoman-generator').test;
 var assert = require('yeoman-generator').assert;
 
-describe('hmrcnodeprototype:app', function () {
+describe('hmrc-prototype-kit:app', function () {
 	describe('default', function(){
 		before(function(done){
 			helpers.run(path.join(__dirname, '../app'))
