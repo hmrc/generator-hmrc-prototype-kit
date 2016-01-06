@@ -28,7 +28,7 @@
     "node": ">=0.12.0",
     "npm": ">=1.2.10"
   },
-  "license": "MIT",
+  "license": "Apache",
   "directories": {
     "test": "test"
   },

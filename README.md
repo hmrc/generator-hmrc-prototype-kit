@@ -54,5 +54,9 @@ $ yo hmrc-prototype-kit
 When you run the yo command above you have the option to launch the application on completion.
 If you answer yes the application we be started on port 3000 and you can launch it immediatley in your broswer by going to http://localhost:3000
 
+### License
+
+This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
+
 
 
