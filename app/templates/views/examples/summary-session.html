@@ -1,18 +1,15 @@
-{{<layout}}
+{% extends "layout.html" %}
 
-{{$pageTitle}}
+{% block page_title %}
   Prototype - Check your answers
-{{/pageTitle}}
+{% endblock %}
 
-{{$content}}
+{% block content %}
 
 <main id="content" role="main">
   <!-- Banner -->
   <div class="phase-banner">
-    <p>
-      <strong class="phase-tag">ALPHA</strong>
-      <span>This is a new service – your <a href="https://designpatterns.hackpad.com/GOV.UK-elements-feedback-sKrDyQxcfA2">feedback</a> will help us to improve it.</span>
-    </p>
+     {% include "includes/phase_banner_alpha.html" %}
   </div>
   <div class="logo"></div>
   <span class="organisation-logo organisation-logo-medium">HM Revenue &amp; Customs</span><!-- /Banner -->
@@ -24,7 +21,6 @@
     </div><!-- /Back button -->
     <!-- Title -->
     <h2 class="form-title heading-large">Check your answers</h2>
-
     <div class="form-group">
       <table>
         <tbody>
@@ -35,63 +31,76 @@
           </tr>
           <tr>
               <td>Service name</td>
-              <td>{{service}}</td>
+              <td>{{ service }}</td>
               <td><a href="/examples/about-service-session">change</a></td>
           </tr>
 
           <tr>
               <td>Service Reference Number</td>
-              <td>{{SRN}}</td>
+              <td>{{ SRN }}</td>
               <td><a href="/examples/about-service-session">change</a></td>
           </tr>
 
           <tr>
               <td>Who does this service relate to</td>
-              <td>{{indOrComp}}</td>
+              <td>{{ indOrComp }}</td>
               <td><a href="/examples/about-service-session">change</a></td>
           </tr>
 
           <tr>
               <td  style="vertical-align:top">Name and Address</td>
-              <td  style="vertical-align:top">{{fullname}}<br/>
-                  {{address1}}<br/>
-                  {{address2}}<br/>
-                  {{address3}}<br/>
-                  {{address4}}<br/>
-                  {{postcode}}
+              <td  style="vertical-align:top">{{ fullname }}<br/>
+                  {{ address1 }}<br/>
+                  {{ address2 }}<br/>
+                  {{ address3 }}<br/>
+                  {{ address4 }}<br/>
+                  {{ postcode }}
               </td>
               <!-- Change the change link depending on whether an company or individual -->
-              <td  style="vertical-align:top">
-                {{#isCompany}}<a href="/examples/about-company-session">change</a>{{/isCompany}}
-                {{#isIndividual}}<a href="/examples/about-person-session">change</a>{{/isIndividual}}
-              </td>
+              <td  style="vertical-align:top">                  
+              <!-- Change the change link depending on whether an company or individual -->
+                {% if isIndividual %}
+                   <a href="/examples/about-person-session">change</a> 
+                {% else %}
+                      <a href="/examples/about-company-session">change</a>
+                {% endif %}
           </tr>
 
-          <tr>
+          <tr><a href="/examples/about-company-two-session">change</a>
               <td>Phone number</td>
-              <td>{{phone}}</td>
-              <td>
+              <td>{{ phone }}</td>
+             <td>
                 <!-- Change the change link depending on whether an company or individual -->
-                {{#isCompany}}<a href="/examples/about-company-two-session">change</a>{{/isCompany}}
-                {{#isIndividual}}<a href="/examples/about-person-two-session">change</a>{{/isIndividual}}          
+                {% if isIndividual %}
+                   <a href="/examples/about-person-two-session">change</a> 
+                {% else %}
+                      <a href="/examples/about-company-two-session">change</a>
+                {% endif %}
               </td>
           </tr>
 
           <tr>
           <!-- Change the date label depending on whether an company or individual  -->
-              <td>{{#isCompany}}Date company started trading{{/isCompany}}{{#isIndividual}}Date of birth{{/isIndividual}}</td>
-              <td>{{dateDday}} {{dateMonth}} {{dateYear}}</td>
-              <td><a href="/examples/about-person-two-session">change</a></td>
+              <td>{{ "Date company started trading" if isCompany else "Date of birth" }}</td>
+              <td>{{ dateDday }}{{ dateMonth }}{{ dateYear }}</td>
+              <td>
+                <!-- Change the change link depending on whether an company or individual -->
+                {% if isIndividual %}
+                   <a href="/examples/about-person-two-session">change</a> 
+                {% else %}
+                      <a href="/examples/about-company-two-session">change</a>
+                {% endif %}
+              </td>
           </tr>
           
            <!-- Only render the NINO row if it's an individual -->
-          {{#isIndividual}}
-          <tr>
-              <td>National Insurance number</td>
-              <td>{{nino}}</td>
-              <td><a href="/examples/about-person-two-session">change</a></td>
-          </tr>
-          {{/isIndividual}}
+          {% if isIndividual %}
+            <tr>
+                <td>National Insurance number</td>
+                <td>{{ nino }}</td>
+                <td><a href="/examples/about-person-two-session">change</a></td>
+            </tr>
+          {% endif %}
         </tbody>
       </table>
      
@@ -99,7 +108,7 @@
       <!-- pre check the check box if an individual --> 
       <label class="form-checkbox" for="forwardFreeCheckingService">
         <input id="forwardFreeCheckingService" type="checkbox"
-               name="forwardFreeCheckingService" value="{{isIndividual}}" {{#isIndividual}} checked="checked"{{/isIndividual}}>
+               name="forwardFreeCheckingService" value="{{ isIndividual }}" {% if isIndividual %} checked="checked" {% endif %}>
         pre-populated checked if an individual
       </label>
     </div>
@@ -110,6 +119,4 @@
   </form>
 </main>
 
-{{/content}}
-
-{{/layout}}
+{% endblock %}

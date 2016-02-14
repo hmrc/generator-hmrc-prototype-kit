@@ -1,7 +1,7 @@
 {
   "name": "generator-hmrc-prototype-kit",
   "version": "0.0.1",
-  "description": "A generator for Yeoman with HMRC template to kick start a Node Application using Express.",
+  "description": "A generator for Yeoman with HMRC template to kick start a Node Application using express.",
   "keywords": [
     "yeoman-generator"
   ],

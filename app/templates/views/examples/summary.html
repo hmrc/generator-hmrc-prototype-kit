@@ -1,18 +1,15 @@
-{{<layout}}
+{% extends "layout.html" %}
 
-{{$pageTitle}}
+{% block page_title %}
   Prototype - Check your answers
-{{/pageTitle}}
+{% endblock %}
 
-{{$content}}
+{% block content %}
 
 <main id="content" role="main">
   <!-- Banner -->
   <div class="phase-banner">
-    <p>
-      <strong class="phase-tag">ALPHA</strong>
-      <span>This is a new service – your <a href="https://designpatterns.hackpad.com/GOV.UK-elements-feedback-sKrDyQxcfA2">feedback</a> will help us to improve it.</span>
-    </p>
+     {% include "includes/phase_banner_alpha.html" %}
   </div>
   <div class="logo"></div>
   <span class="organisation-logo organisation-logo-medium">HM Revenue &amp; Customs</span><!-- /Banner -->
@@ -90,6 +87,4 @@
   </form>
 </main>
 
-{{/content}}
-
-{{/layout}}
+{% endblock %}

@@ -1,17 +1,16 @@
-{{<layout}}
-{{$pageTitle}}
-  [Project] - Scenarios
-{{/pageTitle}}
 
-{{$content}}
+{% extends "layout.html" %}
+
+{% block page_title %}
+   [Project] - Scenarios
+{% endblock %}
+
+{% block content %}
 
 <main id="content" role="main">
 
   <div class="phase-banner">
-    <p>
-      <strong class="phase-tag">ALPHA</strong>
-      <span>This is a new service – your <a href="https://designpatterns.hackpad.com/GOV.UK-elements-feedback-sKrDyQxcfA2">feedback</a> will help us to improve it.</span>
-    </p>
+   {% include "includes/phase_banner_alpha.html" %}
   </div>
   
   <div class="logo">
@@ -31,6 +30,4 @@
 
 </main><!-- / #page-container -->
 
-{{/content}}
-
-{{/layout}}
+{% endblock %}
