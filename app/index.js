@@ -31,25 +31,29 @@ NodeExpressGenerator.prototype.askFor = function askFor() {
   // have Yeoman greet the user.
   console.log(this.yeoman);
 
-
   // section to prompt the user for a response. In this case to launch the prototype or not on completion.
   var prompts = [
     {
       name: 'RunOnComplete',
       type: 'confirm',
-      message: 'Do you want to start the application in localhost on compeltion?',
+      message: 'Do you want to start the application in localhost on completion?',
       default: true
     }
   ];
+
 
    /**
    * If you add a prompt above, make sure you add it below here as well
    * e.g this.newName = props.newName;
    */
-  this.prompt(prompts, function (props) {
+ 
+
+this.prompt(prompts, function (props) {
     this.RunOnComplete = props.RunOnComplete;
     cb();
   }.bind(this));
+
+
 };
 
 
@@ -67,9 +71,10 @@ NodeExpressGenerator.prototype.copyRootFiles = function copyRootFiles() {
 
 NodeExpressGenerator.prototype.routes = function routes() {
   
-  console.log("Creating app directory and the application routes file...");
+  console.log("Creating app directory and the application routes and config file...");
   this.mkdir('app')
   this.copy('routes.js', 'app/routes.js');
+  this.copy('config.js', 'app/config.js');
 };
 
 NodeExpressGenerator.prototype.views = function views() {
@@ -82,9 +87,11 @@ NodeExpressGenerator.prototype.views = function views() {
   this.mkdir('app/views/examples/elements');
   this.mkdir('app/views/includes');
 
+  this.copy('views/index.html', 'app/views/index.html'); 
   this.copy('views/start.html', 'app/views/start.html');
   this.copy('views/scenarios.html', 'app/views/scenarios.html');
   this.copy('views/layout.html', 'app/views/layout.html');
+  this.copy('views/layout_unbranded.html', 'app/views/layout_unbranded.html');
   this.copy('views/unbranded.html', 'app/views/unbranded.html');
   this.copy('views/unbranded_template.html', 'app/views/unbranded_template.html');
 
@@ -114,6 +121,8 @@ NodeExpressGenerator.prototype.views = function views() {
   this.copy('views/includes/breadcrumb_examples.html', 'app/views/includes/breadcrumb_examples.html');
   this.copy('views/includes/examples_head.html', 'app/views/includes/examples_head.html');
   this.copy('views/includes/head.html', 'app/views/includes/head.html');
+  this.copy('views/includes/phase_banner_alpha.html', 'app/views/includes/phase_banner_alpha.html');
+  this.copy('views/includes/phase_banner_beta.html', 'app/views/includes/phase_banner_beta.html');
   this.copy('views/includes/propositional_navigation.html', 'app/views/includes/propositional_navigation.html');
   this.copy('views/includes/propositional_navigation_alpha.html', 'app/views/includes/propositional_navigation_alpha.html');
   this.copy('views/includes/scripts.html', 'app/views/includes/scripts.html');
@@ -124,8 +133,10 @@ NodeExpressGenerator.prototype.lib = function lib() {
   console.log("Scaffolding the lib folder...");  
   console.log("Creating the lib folder and copying its content files...");  
 
-  this.mkdir('lib'); 
+  this.mkdir('lib');
   // root lib folder
+  this.copy('lib/govuk_template.html', 'lib/govuk_template.html');
+  this.copy('lib/govuk_template_unbranded.html', 'lib/govuk_template_unbranded.html');
   this.copy('lib/template-config.js', 'lib/template-config.js');
   this.copy('lib/template-conversion.js', 'lib/template-conversion.js');
   this.copy('lib/template-engine.js', 'lib/template-engine.js'); 
@@ -168,12 +179,15 @@ NodeExpressGenerator.prototype.assets = function assets() {
   // assets/sass
   console.log("copying the assets/sass content files...");   
   this.copy('assets/sass/application.scss', 'app/assets/sass/application.scss');
-  this.copy('assets/sass/elements.scss', 'app/assets/sass/elements.scss');
+  // this.copy('assets/sass/elements.scss', 'app/assets/sass/elements.scss');
+  this.copy('assets/sass/_govuk-elements.scss', 'app/assets/sass/_govuk-elements.scss');
+
   this.copy('assets/sass/examples.scss', 'app/assets/sass/examples.scss');
   this.copy('assets/sass/patterns.scss', 'app/assets/sass/patterns.scss');
 
   console.log("copying the assets/sass/elements content files...");   
-  this.copy('assets/sass/elements/_breadcrumb.scss', 'app/assets/sass/elements/_breadcrumb.scss');
+  this.copy('assets/sass/elements/_base.scss', 'app/assets/sass/elements/_base.scss');
+  this.copy('assets/sass/elements/_breadcrumbs.scss', 'app/assets/sass/elements/_breadcrumbs.scss');
   this.copy('assets/sass/elements/_buttons.scss', 'app/assets/sass/elements/_buttons.scss');
   this.copy('assets/sass/elements/_components.scss', 'app/assets/sass/elements/_components.scss'); 
   this.copy('assets/sass/elements/_details.scss', 'app/assets/sass/elements/_details.scss');
@@ -184,6 +198,7 @@ NodeExpressGenerator.prototype.assets = function assets() {
   this.copy('assets/sass/elements/_layout.scss', 'app/assets/sass/elements/_layout.scss');
   this.copy('assets/sass/elements/_lists.scss', 'app/assets/sass/elements/_lists.scss');
   this.copy('assets/sass/elements/_panels.scss', 'app/assets/sass/elements/_panels.scss');
+  this.copy('assets/sass/elements/_phase-banner.scss', 'app/assets/sass/elements/_phase-banner.scss');
   this.copy('assets/sass/elements/_reset.scss', 'app/assets/sass/elements/_reset.scss');
   this.copy('assets/sass/elements/_tables.scss', 'app/assets/sass/elements/_tables.scss');
 

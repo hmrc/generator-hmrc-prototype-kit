@@ -335,7 +335,6 @@ router.get('/examples/summary-session', function (req, res) {
 
 // Summary-Session
 router.post('/examples/summary-session', function(req, res){
-    console.log("in summary session");
     res.redirect(301, '/examples/summary-session');
 });
 /****************** end of advanced routes example *****************************/
